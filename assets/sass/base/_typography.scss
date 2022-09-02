@@ -1,0 +1,466 @@
+html{
+    font-size: 62.5%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6,
+p,a,span,li,dl,
+label,button,input,textarea,select,
+thead,tbody,tfoot,th,pre,div{
+    line-height: 1.5;
+    letter-spacing: 0.025rem;
+    font-weight: 400;
+}
+// to align with other input
+select{
+    text-indent: -2px;
+}
+
+button, %btn{
+    font-weight: 600;
+    text-transform: uppercase;
+    span,a{
+        font-weight: 600;
+    }
+}
+
+input, a, p, span, button, %btn, textarea, select, option, pre, div{
+    font-size: $basic-text;
+    font-family: 'Open Sans', sans-serif;
+}
+
+header h1{
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+}
+
+h2{
+    font-size: $h2-text-mobile;
+    @include respond-to('large'){
+        font-size: $h2-text-desktop;
+    }
+}
+h3{
+    font-size: $h3-text-mobile;
+    @include respond-to('large'){
+        font-size: $h3-text-desktop;
+    }
+}
+
+b{
+    font-weight: 600;
+}
+
+table{
+
+    thead{
+        font-size: $h3-text-mobile;
+    }
+
+    tbody{
+        font-size: $basic-text;
+    }
+    
+    tfoot{
+
+    }
+}
+//for mobile nav h1
+.mainNav{
+    h1{
+        font-size: $basic-text;
+    }
+    a{
+        font-weight: 600;
+        @include respond-to('medium2'){
+            font-weight: 400;
+        }
+    }
+}
+.accountNameContainer{
+    h3{
+        text-transform: capitalize;
+        font-weight: 600;
+        text-align: center;
+    }
+    a{
+        text-transform: capitalize !important;
+    }
+}
+//index
+.heroBox{
+    h1,h2{
+        font-family: 'Cinzel', serif !important;
+    }
+    h1{
+        
+        line-height: 1.3;
+        font-size: $h2-text-desktop;
+        line-height: 1.3;
+        letter-spacing: 0.15rem;
+        font-weight: 600;
+        @include respond-to('medium2'){
+            font-size: 3rem;
+            font-weight: 500;
+        }
+        @include respond-to('large'){
+            font-size: 3.6rem;
+        }
+    }
+    h2{
+        letter-spacing: 0.2rem;
+        font-size: $h3-text-mobile;
+        @include respond-to('medium2'){
+            font-size: $h3-text-desktop;
+        }
+        @include respond-to('large'){
+            font-size: $h2-text-desktop;
+        }
+    }
+}
+.welcomeBox{
+    h2{
+        font-family: 'Merriweather', serif;
+        @include respond-to('medium2'){
+            font-size: $h3-text-desktop;
+        }
+        @include respond-to('large'){
+            font-size: $h2-text-desktop;
+        }
+    }
+}
+.home{
+    .heroBox{
+        h1{
+            font-weight: 600;
+            @include respond-to('medium2'){
+                font-size: 4rem;
+                font-weight: 500;
+            }
+            @include respond-to('large'){
+                font-size: 4.8rem;
+            }
+        }
+    }
+    
+}
+.home, .alumniNews, .jobPost{
+    .container{
+        h2,h3{
+            font-family: 'Merriweather', serif;
+        }
+    }
+}
+.jobCon{
+    &>h3{
+        font-size: 2.4rem;
+        margin: 0 0 2.4rem!important;
+    }
+}
+.card{
+    h3{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        @include respond-to('medium2'){
+            -webkit-line-clamp: 2;
+            font-size: $h3-text-desktop;
+            font-weight: 400;
+        }
+    }
+    &.events{
+        h3{
+            @include respond-to('medium2'){
+                font-size: $overline-text-desktop;
+            }
+        }
+    }
+    &.jobs{
+        h3{
+            @include respond-to('medium2'){
+                font-size: $basic-text;
+                font-weight: 600;
+            }
+        }
+    }
+    .author{
+        font-weight: 600;
+    }
+    
+    .date-posted, .date-updated, .availablePos, .author{
+        font-size: $smallest-text;
+        color: $mediumEmphasis;
+    }
+    a{
+        font-family: 'Merriweather', serif;
+    }
+}
+
+//dashboard
+.dashboard{
+    h3{
+        font-size: $overline-text-desktop;
+        font-weight: 600;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        width: 100%;
+    }
+    .visit-count,
+    .job-open-count{
+        font-size: $h1-text-desktop;
+    }
+    a{
+        color: currentColor !important;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+    select{
+        color: $mediumEmphasis;
+    }
+    .author{
+        
+        font-weight: 600;
+    }
+    .time-elapsed{
+        font-size: $smallest-text;
+        color: $mediumEmphasis;
+    }
+    li{
+        p{
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            width: 100%;
+        }
+    }
+}
+
+//userSurvey
+.mainContent{
+    .container{
+        h1{
+            font-size: $h3-text-mobile;
+            font-weight: 600;
+            @include respond-to('medium2'){
+                font-size: $h1-text-desktop;
+            }
+        }
+        .surveyCard{
+            h3{
+                font-size: $h3-text-desktop;
+                text-transform: capitalize;
+            }
+        }
+    }
+}
+.description{
+    pre{
+        white-space: normal;
+    }
+}
+
+//for adminNav
+.adminNav{
+    h3{
+        font-size: $basic-text;
+    }
+}
+
+.form{
+    h3{
+        font-size: $h3-text-mobile;
+        text-transform: capitalize;
+        span{
+            font-size: inherit;
+        }
+    }
+    h4{
+        font-size: $h3-text-mobile;
+    }
+}
+
+.editProfile{
+    h3{
+        font-size: $basic-text;
+        font-weight: 600;
+        @include respond-to('medium2'){
+            font-size: $h3-text-mobile;
+        }
+    }
+}
+
+//form
+.outsideLabel,label{
+    font-size: $basic-text;
+}
+.optionSpan{
+    font-size: 2.7rem;
+}
+.answerCon{
+    li{
+        font-size: $basic-text;
+        .flex-con{
+            font-weight: 600;
+        }
+        span,p{
+            font-size: inherit;
+            font-weight: inherit;
+        }
+        .answer-ratio{
+            font-weight: 400;
+        }
+    }
+}
+
+
+//loginPage
+
+.loginMain{
+    h1{
+        font-family: 'Cinzel', serif;
+        font-size: $h1-text-mobile;
+        font-weight: 500;
+    }
+    header{
+        .changePassHeader{
+            color: $primaryColorLight;
+            font-size: 2.4rem;
+            font-weight: 600;
+            text-transform: capitalize;
+            &.text-initial{
+                text-transform: initial;
+            }
+        }
+        span{
+            color: $mediumEmphasis;
+            @include respond-to('large'){
+                font-size: $overline-text-desktop;
+                letter-spacing: 0.015rem;
+            }
+        }
+    }
+    &>div>p{
+        text-align: center;
+        color: $mediumEmphasis;
+    }
+    p{
+        a,span{
+            font-weight: 600;
+        }
+    }
+    h3{
+        color: $primaryColorLight;
+        padding-bottom: 0.8rem;
+        font-size: 1.8rem;
+        font-weight: 600;
+        border-bottom: 1px solid $disabled;
+    }
+    div>a{
+        text-transform: capitalize;
+    }
+    ul{
+        list-style: disc;
+        padding-left: 2rem;
+        margin: initial;
+    }
+}
+
+.textFieldContainer{
+    #verification-code{
+        letter-spacing: 4.2rem;
+    }
+    .error{
+        font-size: 1.2rem;
+        letter-spacing: 0.04rem;
+        color: $errorColor1;
+    }
+}
+.error{
+    font-size: 1.2rem;
+    letter-spacing: 0.04rem;
+    color: $errorColor1;
+}
+//forum
+.forum-details{
+    h3{
+        font-weight: 600;
+    }
+    span,p{
+        font-size: $smallest-text;
+    }
+}
+//footer
+.mainFooter{
+    h1{
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        font-size: $h3-text-desktop;
+        font-size: $h3-text-mobile;
+        @include respond-to('medium2'){
+            font-size: $h3-text-desktop;
+        }
+        span{
+            font-family: inherit;
+            font-weight: inherit;
+            color: $primaryColorLight;
+            letter-spacing: 0.15rem;
+            font-size: $basic-text;
+            @include respond-to('medium2'){
+                font-size: $overline-text-desktop;
+            }
+        }
+    }
+    .tagline{
+        font-family: 'Poppins',sans-serif;
+        text-transform: uppercase;
+        font-style: italic;
+        font-weight: 800;
+        font-size: 1.6rem;
+        @include respond-to('medium2'){
+            font-size: $overline-text-desktop;
+        }
+    }
+}
+.midot{
+    font-size: 1.5rem;
+}
+.alumGallery,.galCon{
+    h3{
+        font-size: $basic-text;
+        font-weight: 600;
+        @include respond-to('medium2'){
+            font-size: $overline-text-desktop;
+        }
+        
+    }
+}
+
+
+.modalFilterNav{
+    h1,h3{
+        font-weight: 600;
+    }
+    .profile-header{
+        .date-res-con{
+            color: $mediumEmphasis;
+            span{
+                font-weight: 600;
+            }
+        }
+        
+    }
+    .profile-body{
+        h3{
+            font-size: $h3-text-mobile;
+        }
+    }
+}
+.emphasis{
+        font-weight: 600;
+}

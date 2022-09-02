@@ -1,0 +1,63 @@
+//Color Variables
+$primaryColor: #5c1c1c;
+$primaryColorDark: #522121;
+$primaryColorLight: #a63f3f;
+
+$secondaryColor: #c7b13f;
+$backgroundColor: #eeeeee;
+$surfaceColor: #ffffff;
+
+$highEmphasis: rgba(0, 0, 0, 0.87);
+$mediumEmphasis: rgba(0, 0, 0, 0.6);
+$disabled: rgba(0, 0, 0, 0.38);
+$textfield-border: rgba(0, 0, 0, 0.2);
+
+$errorColor1: #b00020;
+$errorColor2: #b61734;
+$eventCardMobile: #646464;
+$visitedColor: #8e5e57;
+$activeIndicator: #15cc8a;
+$googleFormsColor: #7248bc;
+
+//Font Sizes
+//mobile
+$smallest-text: 1.2rem;
+$basic-text: 1.4rem;
+$h3-text-mobile: 1.8rem;
+$h2-text-mobile: 2.4rem;
+$h1-text-mobile: 3.6rem;
+
+//desktop
+$overline-text-desktop: 1.8rem;
+$h3-text-desktop: 2.4rem;
+$h2-text-desktop: 3rem;
+$h1-text-desktop: 3.6rem;
+
+//Elevation Variables
+$elevate1dp: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+  0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+$elevate2dp: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+  0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+$elevate3dp: 0px 1px 8px 0px rgba(0, 0, 0, 0.2),
+  0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 3px 3px -2px rgba(0, 0, 0, 0.12);
+$elevate4dp: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+  0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+$elevate6dp: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+  0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+$elevate8dp: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+$elevate12dp: 0px 7px 8px -4px rgba(0, 0, 0, 0.2),
+  0px 12px 17px 2px rgba(0, 0, 0, 0.14), 0px 5px 22px 4px rgba(0, 0, 0, 0.12);
+$elevate16dp: 0px 8px 10px -5px rgba(0, 0, 0, 0.2),
+  0px 16px 24px 2px rgba(0, 0, 0, 0.14), 0px 6px 30px 5px rgba(0, 0, 0, 0.12);
+$elevate24dp: 0px 11px 15px -7px rgba(0, 0, 0, 0.2),
+  0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+$minimalShadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
+//breakpoints
+$breakpoints: (
+  "medium": 415px,
+  "medium2": 800px,
+  "large": 1367px,
+);
+
+//util

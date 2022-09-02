@@ -1,0 +1,359 @@
+//this .users class is attach to div together with .main class
+// speific just for this page
+.users{
+    .filterNav{
+        //forfirefox scrollbar
+        scrollbar-width: thin;
+        scrollbar-color: $disabled $surfaceColor;
+        &::-webkit-scrollbar{
+            width: 0.5rem;
+        }
+        &::-webkit-scrollbar-track{
+            background-color: $surfaceColor;
+        }
+        &::-webkit-scrollbar-thumb{
+            background-color: $disabled;
+            border-radius: 5rem;
+        }
+        max-width: 26rem;
+        width: 26rem;
+        min-width: 22.8rem;
+        padding: 5.6rem 2.4rem;
+        background-color: $backgroundColor;
+        box-shadow: $elevate24dp;
+        z-index: 21;
+        overflow-y: auto;
+        max-height: 100vh;
+        button{
+            width: 100%;
+        }
+        button,a{
+            @extend %filled;
+            min-height: 3rem;
+            svg{
+                width: 2.1rem;
+                height: 2.1rem;
+                transition: 200ms ease;
+            }
+        }
+        &>a{
+            text-transform: capitalize !important;
+        }
+        .settings{
+            width: 2.1rem;
+            height: 2.1rem;
+            cursor: pointer;
+            &:focus,&:hover{
+            opacity: 0.8;
+            }
+        }
+        .btnContainer{
+            display: flex;
+            flex-flow: column;
+            margin-bottom: 2.4rem;
+            border-radius: 2.5rem;
+            @include set-background-color($surfaceColor);
+            &>button{
+                justify-content: space-between!important;
+            }
+            svg.active{
+                display: none;
+            }
+            &.active{
+                .manageUsers{
+                    @include set-background-color($primaryColorLight);
+                    //icons
+                    svg.default{
+                        display: none;
+                    }
+                    svg.active{
+                        display: inline;
+                    }
+                }
+                .manageOptions{
+                    visibility: visible;
+                    max-height: 200px;
+                    opacity: 1;
+                    margin-top: 0.8rem;
+                }
+                & ~ .department{
+                    .deptHead{
+                        svg:first-of-type{
+                            display: none;
+                        }
+                        svg:last-of-type{
+                            display: inline;
+                        }
+                    }
+                    .groupHeader{
+                        //the alumni count
+                        & > span:last-of-type{ 
+                            display: none;
+                        }
+                        & svg{
+                            display: block !important;
+                        }
+                    }
+                    .subGroup{
+                        svg{
+                            display: block;
+                        }
+                    }
+                }
+            }
+
+            .manageUsers{
+                @extend %btn;
+                @include set-background-color($surfaceColor);
+                box-shadow: $elevate1dp;
+                text-decoration: none;
+                svg{
+                    width: 2.4rem;
+                    height: 2.4rem;
+                }
+            }
+            .manageOptions{
+                visibility: hidden;
+                max-height: 0;
+                opacity: 0;
+                transition: 200ms ease, visibility 100ms ease;
+                button{
+                    @include set-background-color($surfaceColor);
+                    text-transform: capitalize;
+
+                    &:focus, &:hover{
+                        box-shadow: none;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        .allUser{
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            @extend %btn;
+                @include set-background-color($backgroundColor);
+                min-height: 3rem;
+                text-decoration: none;
+                &.active{
+                    @include set-background-color($surfaceColor);
+                }
+        }
+        hr{
+            color: $disabled;
+        }
+        .department, .groupList{
+            display: flex;
+            flex-flow: column;
+            /* gap: 0.8rem; */
+            &>*+*{
+                margin-top: 0.8rem;
+            }
+        }
+        .department{
+            margin: 3.2rem 0;
+            & > li{
+                &> .deptHead{
+                    @extend %btn;
+                    min-height: 3rem!important;
+                    text-transform: capitalize;
+                    justify-content: space-between;
+                    color: currentColor;
+                    text-decoration: none;
+                    padding: 0 !important;
+                    &:focus, &:hover{
+                        box-shadow: none !important;
+                    }
+                    //overide
+                    padding: 0 1.6rem 0 0.8rem;
+                    &.active{
+                        & ~ .groupList{
+                            //show
+                            display: flex;
+                            visibility: visible;
+                            opacity: 1;
+                            max-height: 100%;
+                        }
+                        svg{
+                            transform: rotate(180deg);
+                        }
+                    }
+                    svg:last-of-type{
+                        display: none;
+                    }
+                    
+                } 
+            }
+            .groupList{
+                visibility: hidden;
+                opacity: 0;
+                max-height: 0;
+                margin-top: 0.8rem;
+                transition: 200ms ease, visibility 100ms ease;
+                .group{
+                    .groupHeader{
+                        @extend %btn;
+                        min-height: 3rem !important;
+                        text-transform: uppercase;
+                        justify-content: flex-start;
+                        position: relative;
+                        text-decoration: none;
+                        color: currentColor;
+                        &.active{
+                            @include set-background-color($surfaceColor);
+                            & ~ .subGroupList{
+                                visibility: visible;
+                                opacity: 1;
+                                max-height: initial;
+                            }
+                            svg{
+                                transform: rotate(180deg);
+                            }
+                        }
+                        & > span:first-of-type{
+                            position: absolute;
+                            left: 8rem;
+                        }
+    
+                        & > span:last-of-type,svg{ 
+                            margin-left: auto;
+                        }
+                        & > svg:last-of-type{
+                            display: none;
+                        }
+                    }
+                }
+                .subGroupList{
+                    transition: 200ms ease;
+                    visibility: hidden;
+                    opacity: 0;
+                    max-height: 0;
+                    display: flex;
+                    margin-top: 0.8rem;
+                    flex-flow: column;
+                    /* gap: 0.8rem; */
+                    &>*+*{
+                        margin-top: 0.8rem;
+                    }
+                    
+                    .subGroup{
+                        display: flex;
+                        padding: 0 1.6rem;
+                        align-items: center;
+                        justify-content: space-between;
+                    }
+                    a{
+                        flex: 1;
+                        color: set-text-color($backgroundColor);
+                        font-weight: 500;
+                        text-align: left
+                    }
+                    svg{
+                        display: none;
+                    }
+                }
+            }
+        }
+        .settings{
+            fill: $mediumEmphasis!important;
+        }
+        
+        .allUserCount,.groupUserCount{
+            @include set-background-color($primaryColorLight);
+            padding: 0 0.6rem;
+            border-radius: 0.5rem;
+        }
+    }
+    .admin{
+        .input-file-hidden{
+            position: absolute;
+            top: 0;
+        }
+    }
+    .mainContent{
+        .data-table{
+            tr{
+                padding: 2rem 1.6rem;
+            }
+            th,td{
+                //width of the columns set here.
+                &:nth-child(2){
+                    min-width: 11.8rem;
+                }
+                
+                &:nth-child(3),&:nth-child(4){
+                    flex: 1;
+                    //this idot just to make textoverflow ellipsis
+                    max-width: 100%;
+                    width: 5rem;
+                    min-width: 5rem;
+                }
+                &:nth-child(5),&:nth-child(6){
+                    min-width: 5.8rem;
+                }
+                &:nth-child(7){
+                    min-width: 4.8rem;
+                }
+            }
+        }
+
+        &.userReport{
+            th,td{
+                flex: 1;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                &:first-child{
+                    min-width: 12.3rem;
+                }
+                &:nth-child(2){
+                    flex: 1;
+                    max-width: 36rem;
+                }
+                
+                &:nth-child(3),&:nth-child(4){
+                }
+                &:nth-child(3){
+                    min-width: 0;
+                    width: 0;
+                    max-width: 6.2rem;
+                }
+                &:nth-child(4){
+                    min-width: 0;
+                    width: 0;
+                    max-width: 5rem;
+                }
+                &:nth-child(5){
+                    min-width: 0;
+                    width: 0;
+                    max-width: 10rem;
+                }
+                &:nth-child(6){
+                    flex: 1;
+                    max-width: 16rem;
+                    min-width: 0;
+                    width: 0;
+                    margin-right: auto;
+                }
+                &:nth-child(7){
+                    min-width: 3.2rem;
+                    cursor: pointer;
+                    transition: 200ms ease;
+                    &:focus,&:hover{
+                        filter: brightness(1.025);
+                    }
+                    &:active{
+                        filter: brightness(0.85);
+                    }
+                }
+                &:nth-child(6),time,p{
+                    display: block;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

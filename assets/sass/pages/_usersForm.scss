@@ -1,0 +1,51 @@
+.userAdd{
+    .mainContent{
+        &.adminForm{
+            .form{
+                .infoCon{
+                    .smallComponentsContainer{
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+                        column-gap: 3.2rem;
+                    }
+                    //personal info
+                    &:nth-of-type(1){
+                        .smallComponentsContainer{
+                            /* & > div{
+                                min-width: 30rem;
+                            } */
+                        }
+                    }
+                    //contact info
+                    &:nth-of-type(2){
+                        .smallComponentsContainer{
+                            /* & > div{
+                                &:nth-child(1){
+                                    min-width: 100%;
+                                }
+                                &:nth-child(2){
+                                    flex: 2;
+                                }
+                                &:nth-child(5){
+                                    max-width: 31.9rem;
+                                }
+                            } */
+                        }
+                    }
+                    //alumni info
+                    &:nth-of-type(3){
+                        .smallComponentsContainer{
+                            grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+                            column-gap: 3.2rem;
+                            & > div{
+                                /* &:last-child(){
+                                    flex: 2;
+                                } */
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

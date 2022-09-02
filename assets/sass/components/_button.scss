@@ -1,0 +1,131 @@
+%btn {
+  min-height: 4.4rem;
+  min-width: 6.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding: 0 1.6rem;
+  transition: 200ms ease;
+  cursor: pointer;
+  border-radius: 2.5rem;
+
+  &:focus,
+  &:hover {
+    box-shadow: $elevate1dp;
+    outline: 0;
+  }
+
+  &:active {
+    filter: opacity(0.88);
+  }
+}
+
+%outline {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0.5rem;
+}
+
+%filled {
+  border: 1px solid transparent;
+}
+
+button {
+  @extend %btn;
+}
+
+.icon {
+  min-width: 2.4rem;
+  min-height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 200ms ease;
+  fill: currentcolor;
+
+  &:focus,
+  &:hover {
+    filter: brightness(1.01);
+  }
+}
+//ellipsis button
+.option {
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+  .optionSpan {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    &:focus,
+    &:hover {
+      background-color: $backgroundColor;
+      //reset
+      filter: opacity(1);
+    }
+    &.active {
+      & ~ .optionModal {
+        visibility: visible;
+        opacity: 1;
+        z-index: 24;
+      }
+    }
+  }
+  .optionModal {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 4rem;
+    left: -4.6rem;
+    border-radius: 0.5rem;
+    padding: 0 0.8rem;
+    height: 4.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: $elevate3dp;
+    transition: all 200ms ease;
+    & > * + * {
+      margin-left: 0.8rem;
+    }
+    @include set-background-color($backgroundColor);
+    button {
+      @extend %filled;
+      @include set-background-color($surfaceColor);
+    }
+    .btnEditInline {
+      @include set-background-color($surfaceColor);
+    }
+    .btnDeleteInline,
+    .btnDeleteAccount {
+      @include set-background-color($errorColor2);
+    }
+
+    > * {
+      min-width: 3rem;
+      min-height: 3rem;
+      padding: 0;
+      border-radius: 5rem;
+      &:nth-child(1) {
+        svg {
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+      &:nth-child(2) {
+        svg {
+          width: 1.8rem;
+          height: 2rem;
+        }
+      }
+    }
+  }
+}

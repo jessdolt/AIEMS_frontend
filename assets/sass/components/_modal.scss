@@ -1,0 +1,1074 @@
+//same bg setting for preview, question, filterNav modal, changeCoverModal
+.modalContainer,
+.addModalContainer,
+.modalConFilterNav,
+.changeModalContainer,
+.imageViewModal,
+.privacyModalCon{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $mediumEmphasis;
+    z-index: 25;
+    align-items: center;
+    justify-content: center;
+    &.show{
+        display: flex;
+    }
+}
+
+//for user preview
+.modalContainer{
+    .hidden-form{
+        visibility: hidden;
+    }
+    .modalPreview{
+        border-radius: 1rem;
+        max-height: calc(100vh - 4.8rem);
+            display: flex;
+            flex-flow: column;
+        flex: 1;
+        max-width: 107.7rem;
+        box-shadow: $elevate8dp;
+        .data-table,.pagination{
+            @include set-background-color($surfaceColor);
+        }
+        .data-table{
+            min-height: 15.9rem;
+            max-height: calc(100% - 7.2rem);
+            display: flex;
+            flex-flow: column;
+            flex: 1;
+            width: 100%;
+            border-collapse: collapse;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            thead,tbody{
+                width: 100%;
+                padding: 0 2.4rem;
+                display: flex;
+            }
+            th,td{
+                &:first-child{
+                    border-top-left-radius: 1rem;
+                }
+
+                &:last-child{
+                    border-top-right-radius: 1rem;
+                }
+            }
+            tr{
+                display: flex;
+                gap: 3.2rem;
+                align-items: center;
+                justify-content: center;
+                padding: 0.8rem 1.6rem;
+                border-bottom: 1px solid $textfield-border;
+            }
+            //width of the columns set here.
+            thead{
+                height: 4.3rem;
+                border-top-left-radius: 1rem;
+                border-top-right-radius: 1rem;
+                @include set-background-color($primaryColorLight);
+                &.bigger{
+                    height: 7rem;
+                }
+                tr{
+                    width: 100%;
+                }
+            }
+            
+            tbody{
+                overflow-y: auto;
+                //forfirefox scrollbar
+                scrollbar-width: thin;
+                scrollbar-color: $disabled $surfaceColor;
+                padding-top: 0.8rem;
+                flex-flow: column;
+                flex: 1;
+                &::-webkit-scrollbar{
+                    width: 0.5rem;
+                }
+                &::-webkit-scrollbar-track{
+                    background-color: $surfaceColor;
+                }
+                &::-webkit-scrollbar-thumb{
+                    background-color: $disabled;
+                    border-radius: 5rem;
+                    
+                }
+                td{
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+            //limit the paragraph in table to 3 lines
+            p{
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+                width: 100%;
+                text-align: center;
+            }
+            //this idot just to make textoverflow ellipsis
+            .studentName, .studentEmail,.jobTitle,.company{
+                display: block;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            .Description,.description{
+                text-align: left;
+            }
+        }
+
+        .pagination{
+            @include set-background-color($backgroundColor);
+            height: 7.2rem;
+            display: flex;
+            align-items: center;
+            gap: 4.8rem;
+            padding: 1.35rem 3.2rem;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            h3{
+                font-size: 2.4rem;
+                font-weight: 600;
+            }
+            .fileNameCon{
+                span{
+                    font-size: 1.8rem;
+                }
+                .filename{
+                    color: $primaryColorLight;
+                }
+            }
+            .btnContainer{
+                display: flex;
+                gap: 2.4rem;
+                width: 38.4rem;
+                margin-left: auto;
+                button{
+                    @extend %filled;
+                    @include set-background-color($surfaceColor);
+                    flex: 1;
+                    font-weight: 400;
+                    max-width: 18rem;
+                    min-height: 4rem;
+                    text-transform: capitalize;
+                    position: relative;
+                    svg{
+                        position: absolute;
+                        top: 50%;
+                        left: 1.1rem;
+                        transform: translateY(-50%);
+                        width: 2.4rem;
+                        height: 2.4rem;
+                    }
+                }
+                .upload{
+                    @include set-background-color($primaryColorLight);
+                }
+            }
+            &.v2{
+                h3{
+                    font-size: $overline-text-desktop;
+                    font-weight: 400;
+                }
+                .warningCon{
+                    .warning{
+                        color: $primaryColorLight;
+                        font-weight: 600;
+                    }
+                }
+                .btnContainer{
+                    display: flex;
+                    gap: 2.4rem;
+                    width: 18rem;
+                    margin-left: auto;
+                }
+            }
+            
+        }
+
+        .data-table{
+            tr{
+                padding: 2rem 1.6rem;
+            }
+            th,td{
+                //width of the columns set here.
+                &:nth-child(1){
+                    min-width: 11.8rem;
+                }
+                
+                &:nth-child(2),&:nth-child(3){
+                    flex: 1;
+                    //this idot just to make textoverflow ellipsis
+                    max-width: 100%;
+                    width: 5rem;
+                    min-width: 5rem;
+                }
+                &:nth-child(4),&:nth-child(5),&:nth-child(6){
+                    min-width: 5.8rem;
+                }
+            }
+        }
+    }
+}
+//for alert modal
+.alertModalContainer,.notifModalContainer{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100vw;
+    height: 100vh;
+    background-color: $mediumEmphasis;
+    z-index: 25;
+    transition: opacity 300ms ease;
+    opacity: 0;
+    &.show{
+        opacity: 1;
+        display: block;
+    }
+    .alertModal{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        display: none;
+        flex-flow: column;
+        align-items: center;
+        padding: 5.2rem 1.4rem 2.4rem;
+        border-radius: 1rem;
+        background-color: transparent;
+        background-image: url('../images/alertContainer.png');
+        background-position: top 1px center;
+        background-repeat: no-repeat;
+        /* box-shadow: $elevate24dp; */
+        @include respond-to('medium2'){
+
+            padding: 7rem 2.4rem 2.4rem 2.4rem;
+        }
+
+        //change color base on class in alert modal
+        &.logoutAlert.show{
+            display: flex;
+            svg{
+                background-image: url("../images/alertLogoutIcon.svg");
+            }
+            div{
+                a{
+                    @include set-background-color($primaryColorLight);
+                }
+            }
+        }
+        &.deleteAlert.show{
+            display: flex;
+            svg{
+                background-image: url("../images/errorIcon.svg");
+            }
+            div{
+                a{
+                    @include set-background-color($errorColor2);
+                }
+            }
+        }
+        &.deleteAlertAll.show{
+            display: flex;
+            svg{
+                background-image: url("../images/errorIcon.svg");
+            }
+            div{
+                button:last-child{
+                    @include set-background-color($errorColor2);
+                }
+            }
+        }
+        &.notify{
+            padding: 5.2rem 3.2rem 2.4rem;
+            @include respond-to('medium2'){
+                padding: 7rem 7.2rem 2.4rem;
+            }
+            button,a{
+                min-width: 24.8rem;
+                @include set-background-color($backgroundColor);
+            }
+            svg{
+                position: absolute;
+                top: -75px;
+            }
+        }
+        &.successAlert.show{
+            display: flex;
+            svg{
+                background-image: url("../images/successIcon.svg");
+            }
+        }
+        &.warningAlert.show{
+            display: flex;
+            p{
+                margin-top: 0.8rem;
+            }
+            svg{
+                background-image: url("../images/warningIcon.svg");
+            }
+        }
+        &.errorAlert.show{
+            display: flex;
+            p{
+                margin-top: 0.8rem;
+            }
+            svg{
+                background-image: url("../images/errorIcon.svg");
+            }
+        }
+
+        &.manage{
+            h2{
+                font-size: $h3-text-desktop;
+            }
+            form>div{
+                margin-top: 2.4rem;
+            }
+
+
+        }
+    
+        svg{
+            position: absolute;
+            top: -75px;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        
+        h2,p{
+            text-align: center;
+        }
+        
+        p{
+            margin-top: 2.4rem;
+            max-width: 25.2rem;
+        }
+    
+        div{
+            margin-top: 3.2rem;
+            display: flex;
+            gap: 2.4rem;
+            a,button{
+                min-width: 14rem;
+                @include respond-to('medium2'){
+                    min-width: 16rem;
+                }
+            }
+            button{
+                @extend %filled;
+                @include set-background-color($backgroundColor);
+            }
+            .modalDeleteInline{
+                @include set-background-color($errorColor2);
+            }
+            a{
+                @extend %btn;
+            }
+        }
+        .column{
+            flex-flow: column;
+            gap: 0;
+            &>div{
+                margin-top: 0;
+            }
+            
+        }
+        //single components
+        input[type="password"]{
+            border-radius: 0.5rem;
+            border-right: 1px solid $textfield-border !important;
+            min-width: 32.4rem;
+            padding-right: 1.6rem;
+            padding-left: 1.6rem;
+            &:focus{ 
+                border-right: 1px $mediumEmphasis solid!important;
+            }
+        }
+    }
+    .successAlert{
+        @include set-background-color($surfaceColor);
+        position: absolute;
+        top: 1.6rem;
+        right: 1.6rem;
+        display: none;
+        align-items: center;
+        padding: 1.2rem 1.6rem;
+        border-radius: 0.5rem;
+        border-left: 4px solid $activeIndicator;
+        box-shadow: $elevate2dp;
+        animation: slideIn 400ms ease;
+        &.show{
+            display: flex;
+        }
+        &>*{
+            opacity: 0;
+        }
+        &>*+*{
+            margin-left: 0.8rem;
+        }
+        .success-icon{
+            fill: $activeIndicator;
+            animation: scale 1.2s ease-in-out 400ms forwards;
+        }
+        .notif-message-con{
+            max-width: 24.8rem;
+            @include respond-to('medium2'){
+                max-width: 32.8rem;
+            }
+            animation: pop 600ms ease-in-out 400ms forwards;
+        }
+        h2{
+            font-size: $overline-text-desktop;
+        }
+        p{
+            animation-delay: 400ms;
+        }
+        @keyframes slideIn {
+            from{
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to{
+                opacity: 1;
+                transform: translateX(0%);
+            }
+        }
+        @keyframes pop {
+            from{
+                opacity: 0;
+                transform: translateY(-20%);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0%);
+            }
+        }
+        @keyframes scale {
+            0%{
+                opacity: 0;
+                transform: scale(0);
+            }
+            80%{
+                opacity: 1;
+                transform: scale(1.2);
+            }
+            100%{
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    }
+    h2{
+        font-weight: 600;
+    }
+
+}
+//for add question
+.addModalContainer{
+    .addModal{
+        display: flex;
+        flex-flow: column;
+        padding: 2.4rem 4rem;
+        margin: 2.4rem;
+        @include set-background-color($surfaceColor);
+        border-radius: 1rem;
+        width: 100rem;
+        min-width: 0;
+        form{
+            display: flex;
+            flex-flow: column;
+            gap: 2.4rem;
+        }
+        .formContainer{
+            display: flex;
+            flex-flow: wrap;
+            gap: 1.8rem;
+            & > div{
+                flex: 1;
+
+                &:first-child{
+                    flex: 3;
+                }
+                &:last-child{
+                    min-width: 100%;
+
+                    input[type="text"]{
+                        border: none!important;
+                        background-color: transparent;
+                        &:focus,&:hover{
+                            border: 1px solid $textfield-border !important;
+                        }
+                    }
+                }
+            }
+        }
+        .callout{
+            overflow-y: auto;
+            //forfirefox scrollbar
+            scrollbar-width: thin;
+            scrollbar-color: $disabled $surfaceColor;
+            &::-webkit-scrollbar{
+                width: 0.5rem;
+            }
+            &::-webkit-scrollbar-track{
+                background-color: $surfaceColor;
+            }
+            &::-webkit-scrollbar-thumb{
+                background-color: $disabled;
+                border-radius: 5rem;
+            }
+            border: 1px solid $textfield-border;
+            padding: 1.6rem 2.4rem; 
+            border-radius: 0.5rem;
+            max-height: 20.5rem;
+        }
+        table{
+            border-collapse: collapse;
+            width: 100%;
+        }
+        tbody{
+            display: flex;
+            flex-flow: column;
+            gap: 0.8rem;
+        }
+        tr{
+            display: flex;
+            align-items: center;
+            gap: 1.7rem;
+            @include set-background-color($backgroundColor);
+            padding: 0.8rem 1.3rem;
+            border-radius: 0.5rem;
+            td{
+                &:nth-child(1){
+                    min-width: 1.8rem;
+                    & > div{
+                        position: relative;
+                        input{
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%,-50%);
+                        }
+                    }
+                }
+                &:nth-child(2){
+                    flex: 1;
+                }
+                
+            }
+
+        }
+        .btn-opt-delete{
+            cursor: pointer;
+            width: 3rem;
+            height: 3rem;
+            button{
+                @extend %filled;
+                @include set-background-color(transparent);
+                min-width: 3rem;
+                min-height: 3rem;
+                padding: 0;
+            }
+        }
+        .btn-add-opt{
+            margin-top: 1.6rem;
+            button{
+                margin: 0 auto;
+                border: none;
+                background-color: transparent;
+
+                &:focus,&:hover{
+                    background-color: $backgroundColor;
+                }
+            }
+            svg{
+                margin-left: 0.4rem;
+            }
+        }
+        .btnContainer{
+            margin-top: 1.6rem;
+            display: flex;
+            gap: 2.4rem;
+            align-self: flex-end;
+            button{
+               @extend %filled; 
+                flex: 1;
+                width: 16rem;
+            }
+            .cancel{
+                @include set-background-color($backgroundColor);
+            }
+            .add{
+                @include set-background-color($primaryColorLight);
+            }
+        }
+        input[type="text"],input[type="date"],input[type="tel"],input[type="email"],select,textarea{
+            border-radius: 0.5rem;
+            border-right: 1px solid $textfield-border !important;
+            min-width: 32.4rem;
+            padding-right: 1.6rem;
+            padding-left: 1.6rem;
+            &:focus{ 
+                border-right: 1px $mediumEmphasis solid!important;
+            }
+        }
+        textarea{
+            resize: none;
+            width: 100%;
+        }
+        input[type="checkbox"]{
+            position: relative;
+            border-color: $disabled;
+            border-width: 0.25rem;
+            border-style: solid;
+            border-radius: 0.5rem;
+            min-width: 1.7rem;
+            height: 1.7rem;
+            transition: 400ms ease;
+            &:focus,&:hover{
+                border-color: $primaryColorLight;
+            }
+            &:checked{
+                border-color: transparent;
+                width: 2rem;
+                height: 2rem;
+                &::before{
+                    background-image: url('../images/checked.svg');
+                }
+            }
+
+            &::before{
+                content: '';
+                display: inline-flex;
+                background-size: 100%;
+                background-position: center;
+                width: 100%;
+                height: 100%;
+            }
+
+        }
+    }
+}
+
+//for filterNav
+.modalFilterNav{
+    @include set-background-color($surfaceColor);
+    margin: 1.6rem;
+    width: 61.4rem;
+    padding: 2.4rem;
+    border-radius: 1rem;
+    display: none;
+    flex-flow: column;
+    gap: 1.6rem;
+    @include respond-to('medium2'){
+        padding: 2.4rem 4rem;
+    }
+    //newdept
+    &.newDept.show,
+    &.newCourse.show,
+    &.newBatch.show,
+    &.editDept.show,
+    &.editCourse.show,
+    &.editBatch.show{ 
+        display: flex;
+    }
+    &.show{
+        display: flex;
+    }
+    
+    h1{
+        border-bottom: 1px solid $backgroundColor;
+        margin-bottom: 0.8rem;
+    }
+    .btnContainer{
+        margin-top: 2.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 2.4rem;
+        button,a{
+            @extend %filled;
+            min-height: 4rem;
+            width: 16rem;
+            &:last-of-type{
+                @include set-background-color($primaryColorLight);
+            }
+            svg{
+                width: 1.8rem;
+                height: 2rem;
+                align-self: center;
+            }
+        }
+        .btnDeleteInline{
+            @include set-background-color($primaryColorLight);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 4rem !important;
+            min-width: 4rem !important;
+            min-height: 4rem !important;
+            padding: 0 !important;
+            border-radius: 5rem;
+            margin-right: auto;
+        }
+    }
+    //almuniReport
+    &.alum-rep{
+        //forfirefox scrollbar
+        scrollbar-width: thin;
+        scrollbar-color: $disabled $surfaceColor;
+        &::-webkit-scrollbar{
+            width: 0.5rem;
+        }
+        &::-webkit-scrollbar-track{
+            background-color: $surfaceColor;
+        }
+        &::-webkit-scrollbar-thumb{
+            background-color: $disabled;
+            border-radius: 5rem;
+            
+        }
+        width: 106rem;
+        max-height: calc(100% - 4.8rem);
+        overflow: auto;
+        .profile-header{
+            display: flex;
+            align-items: center;
+            &>*+*{
+                margin-left: 1.6rem;
+            }
+        }
+        .profile-body{
+            &>*+*{
+                margin-top: 4rem;
+            }
+            section{
+                border: 1px solid $disabled;
+                border-radius: 1rem;
+                padding: 2.4rem 4.8rem 3.2rem;
+            }
+            h3,li{
+                border-bottom: 1px solid $disabled;
+            }
+            h3{
+                color: $primaryColorLight;
+                font-weight: 600;
+                font-size: 1.8rem;
+                padding-bottom: 2.4rem;
+            }
+            li{
+                padding: 1.6rem 1rem;
+                display: flex;
+                &>*+*{
+                    margin-left: 10rem;
+                }
+            }
+            .li-header, .li-data{
+                flex: 1;
+            }
+            .li-header{
+                font-size: 1.4rem;
+                font-weight: 500;
+                min-width: 10rem;
+                max-width: 21.4rem;
+            }
+            .li-header{
+                color: $mediumEmphasis;
+                text-transform: uppercase;
+            }
+            .img-main-con{
+                max-width: 41.4rem;
+            }
+            .img-con{
+                position: relative;
+                padding-top: 56.25%;
+                width: 100%;
+                img{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 1rem;
+                    border: 1px solid $disabled;
+                    background-image: url('../images/gallery-default.svg');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 8rem;
+                }
+            }
+        }
+    }
+    
+
+    //single components
+    input[type="text"],input[type="date"],input[type="tel"],input[type="email"],select,textarea{
+        border-radius: 0.5rem;
+        border-right: 1px solid $textfield-border !important;
+        min-width: 0;
+        padding-right: 1.6rem;
+        padding-left: 1.6rem;
+        &:focus{ 
+            border-right: 1px $mediumEmphasis solid!important;
+        }
+    }
+    //for batch
+    [for="batch-id"] ~ .textFieldContainer{
+        &::before{
+            content: 'Batch:';
+            position: absolute;
+            top:50%;
+            transform: translateY(-50%);
+            font-size: $basic-text;
+            color: $mediumEmphasis;
+            padding-left: 1.6rem;
+        }
+    }
+    #batch-id{
+        padding-left: 6rem;
+    }
+}
+
+//for changeCover
+.changeModalContainer{
+    .changeCoverModal{
+        @include set-background-color($surfaceColor);
+        position: relative;
+        width: 67.2rem;
+        padding: 2.4rem 4rem;
+        border-radius: 1rem;
+        display: none;
+        flex-flow: column;
+        gap: 1.6rem;
+        //newdept
+        &.show{
+            display: flex;
+        }
+        &>svg{
+            cursor: pointer;
+            position: absolute;
+            top: 2.4rem;
+            right: 3.4rem;
+        }
+        h3{
+            border-bottom: 1px solid $backgroundColor;
+            font-weight: 500;
+        }
+        .uploaded-list,.uploaded-item,img{
+            border-radius: 1rem;
+        }
+        .uploaded-list{
+            //forfirefox scrollbar
+            scrollbar-width: thin;
+            scrollbar-color: $disabled $surfaceColor;
+            &::-webkit-scrollbar-corner{
+                background: rgba(255,0,0,1);
+            }
+            &::-webkit-scrollbar{
+                width: 0.5rem;
+            }
+            &::-webkit-scrollbar-track{
+                background-color: $surfaceColor;
+                border-radius: 1rem;
+
+            }
+            &::-webkit-scrollbar-thumb{
+                background-color: $disabled;
+                border-radius: 5rem;
+                
+            }
+            padding: 2.4rem 3.2rem 2.4rem 0; 
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(11.7rem,1fr));
+            column-gap: 1.6rem;
+            row-gap: 1.6rem;
+            max-height: 31.2rem;
+            overflow-y: auto;
+        }
+        .uploaded-item{
+            position: relative;
+            padding-top: 100%;
+            overflow: hidden;
+            &.selected{
+                img{
+                    filter: brightness(0.6);
+                }
+                &::before{
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-image: url('../images/check-icon.svg');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    z-index: 1;
+                }
+            }
+        }
+        
+        img{
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 200ms ease;
+            &:hover{
+                transform: scale(1.1);
+                filter: brightness(1.2);
+            }
+        }
+    }
+}
+//for galleryView
+.imageViewModal{
+    transition: 200ms ease;
+    & *{
+        transition: 200ms ease;
+    }
+    backdrop-filter: blur(5px);
+    flex-flow: column;
+    svg{
+        min-width: 4em;
+        cursor: pointer;
+        position: absolute;
+        min-height: 4rem;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        z-index: 2;
+        @include respond-to('medium2'){
+            min-width: 6rem;
+            min-height: 6rem;
+        }
+        &:focus,&:hover{
+            filter: brightness(1.2);
+            transform: scale(0.9);
+        } 
+        &:first-of-type{
+            background-image: url('../images/close-btn.svg');
+            
+            top: 2.4rem;
+            right: 2.4rem;
+        }
+        &:nth-of-type(2),&:nth-of-type(3){
+            background-image: url('../images/arrow-next.svg');
+            top: 50%;
+            transform: translateY(-50%);
+            &:focus,&:hover{
+                transform: translateY(-50%) scale(0.9);
+            } 
+            
+        }
+        &:nth-of-type(2){
+            transform: translateY(-50%) rotate(180deg);
+            left: 0.8rem;
+            &:focus,&:hover{
+                transform: translateY(-50%) scale(0.9) rotate(180deg);
+            } 
+            @include respond-to('medium2'){
+                left: 2.4rem;
+            }
+        }
+        &:nth-of-type(3){
+            right: 0.8rem;
+            @include respond-to('medium2'){
+                right: 2.4rem;
+            }
+        }
+    }
+    .imageViewCon{
+        flex: 1;
+        @include set-background-color($surfaceColor);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        border-radius: 1rem;
+        display: none;
+        overflow-x: hidden;
+        @include respond-to('medium2'){
+            left: 10rem;
+            right: 10rem;
+        }
+        @include respond-to('large'){
+            left: 16rem;
+            right: 16rem;
+        }
+        //newdept
+        &.show{
+            display: flex;
+        }
+        
+        .imgCon{
+            position: relative;
+            padding-top: 56.25%;
+            min-width: 100%;
+            height: 100%;
+        }
+        img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    }
+}
+//for privacyModal
+.privacyModal{
+    @include set-background-color($surfaceColor);
+    transition: 200ms ease;
+    padding: 2.4rem 4rem;
+    width: 80rem;
+    max-width: 90%;
+    border-radius: 0.8rem;
+    &>*+*{
+        margin-top: 1.8rem;
+    }
+    .btn-con{
+        display: flex;
+        justify-content: center;
+        form>*{
+            @extend %btn;
+            @extend %filled;
+            @include set-background-color($activeIndicator);
+            min-width: 12rem;
+            min-height: 3rem;
+            text-transform: capitalize;
+            text-decoration: none;
+        }
+        &>*+*{
+            margin-left: 2.4rem;   
+        }
+        .disagree{
+            @include set-background-color($backgroundColor);
+        }
+    }
+}

@@ -1,0 +1,182 @@
+input,
+textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  @include set-background-color($surfaceColor);
+  transition: 200ms ease;
+}
+[role="textbox"] {
+  padding: 0.85rem 1.6rem;
+  border-radius: 0.5rem;
+  min-width: 100%;
+  max-width: 100%;
+  &::before {
+    transition: 200ms ease;
+  }
+}
+.questionnaire {
+  [readonly] {
+    background-color: $backgroundColor !important;
+    color: $disabled !important;
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+}
+:disabled {
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+
+//textfieldwithIcon
+.textFieldContainer {
+  position: relative;
+  display: flex;
+  row-gap: 0.6rem;
+  border-radius: 0.5rem;
+  min-width: 27rem;
+  min-height: 4rem;
+  max-width: 100%;
+
+  @include respond-to("large") {
+    max-width: 100%;
+  }
+
+  .icon,
+  input,
+  select,
+  textarea {
+    border: 1px $textfield-border solid;
+
+    &:focus ~ .icon,
+    &:focus {
+      border: 1px $mediumEmphasis solid;
+    }
+  }
+
+  .icon {
+    background-color: $surfaceColor;
+    border-left: none !important;
+    padding: 0 0.8rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+
+  input,
+  textarea,
+  select {
+    border-right: none !important;
+    padding: 0.85rem 0 0.85rem 1.6rem;
+    border-radius: 0.5rem 0 0 0.5rem;
+    flex: 1;
+    color: $highEmphasis;
+    transition: 200ms ease;
+  }
+  select {
+    flex: 1;
+  }
+  .error {
+    position: absolute;
+    bottom: -1.8rem;
+    left: 1.6rem;
+  }
+}
+
+//input file
+input[type="file"] {
+  height: 0;
+  padding: 0;
+  opacity: 0;
+}
+.fileUploadBtn {
+  display: block;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+input[type="radio"],
+input[type="checkbox"] {
+  cursor: pointer;
+}
+input[type="radio"] {
+  position: relative;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 5rem;
+  border: 1px solid $primaryColorLight;
+  background-color: inherit;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 5rem;
+    transition: 200ms ease;
+  }
+  &:checked::before {
+    background-color: $primaryColorLight;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+textarea {
+  //forfirefox scrollbar
+  scrollbar-width: thin;
+  scrollbar-color: $disabled $surfaceColor;
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $surfaceColor;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $disabled;
+    border-radius: 5rem;
+  }
+  border: 1px $textfield-border solid;
+  border-radius: 0.5rem;
+}
+select {
+  border-radius: 0.5rem;
+}
+
+//email verification hide arrow on input
+.loginMain {
+  input[type="number"] {
+    -moz-appearance: textfield;
+    border: none;
+    background-image: url("../images/verificationBg.svg");
+    background-repeat: no-repeat;
+    &:required:-moz-ui-invalid {
+      background-image: url("../images/verificationBgError.svg");
+      border: none;
+    }
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+}
+
+/* input:required:-moz-ui-invalid{
+    border: 1px solid $errorColor1 !important;
+    border-right: 1px solid $errorColor1 !important;
+    //remove the default red box-shadow for invalid textfield
+    box-shadow: none;
+
+    &~.icon{
+        border: 1px solid $errorColor1 !important;
+        border-right: 1px solid $errorColor1 !important;
+        box-shadow: none;
+    }
+} */
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}

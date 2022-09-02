@@ -1,0 +1,403 @@
+.userSurvey {
+  //editprofile if first time
+  &.firstEdit {
+    //use ::after because ::before is use for the logo
+    &::after {
+      content: "Please Update your profile information!";
+      @include set-background-color($backgroundColor);
+      width: 100%;
+      height: 4rem;
+      position: absolute;
+      top: -4rem;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url("../images/carbon-warning.svg");
+      background-repeat: no-repeat;
+      background-position: calc(50% - 14rem) center;
+      font-size: $basic-text;
+      font-weight: 500;
+      @include respond-to("medium2") {
+        height: 6rem;
+        top: -6rem;
+      }
+    }
+    &,
+    & ~ .headerShadow {
+      top: 4rem;
+      @include respond-to("medium2") {
+        top: 6rem;
+      }
+      &.move {
+        transition: 600ms ease 600ms;
+        transform: translateY(-200px);
+      }
+    }
+    & ~ .mainNav {
+      top: 10rem;
+      @include respond-to("medium2") {
+        top: 12rem;
+      }
+      &.move {
+        transform: translateY(-200px);
+      }
+    }
+    & ~ .editProfile,
+    ~ .mainFooter {
+      top: 10rem;
+      @include respond-to("medium2") {
+        top: 16.6rem;
+      }
+    }
+  }
+}
+.mainHeader ~ .editProfile {
+  overflow-x: hidden;
+  .mainContent {
+    .container {
+      z-index: 2;
+      .form {
+        .questionCon {
+          //reset
+          padding: 1.6rem 2.4rem;
+          box-shadow: none;
+          border: 1px solid $disabled;
+          @include respond-to("medium2") {
+            padding: 1.6rem 4.8rem;
+            /* gap: 4.8rem; */
+            //temporary gap 0
+            gap: 0;
+            & > * + * {
+              margin-top: 4.8rem;
+            }
+          }
+          //changePass
+          &.changePass {
+            @include respond-to("medium2") {
+              max-width: 51rem;
+              align-self: center;
+            }
+            & ~ button {
+              align-self: center;
+            }
+          }
+        }
+        .addInfo {
+          flex-flow: row wrap;
+          align-items: flex-start;
+          & > * + * {
+            margin-top: 2.4rem;
+
+            @media (min-width: 1410px) {
+              margin-left: 3.2rem;
+              margin-top: 0;
+            }
+          }
+        }
+        .smallComponentsContainer {
+          flex: 1;
+        }
+        h1,
+        h2 {
+          text-align: center;
+          border-bottom: none;
+          padding-top: 2.4rem;
+          padding-bottom: 0.8rem;
+        }
+        h3 {
+          color: $primaryColorLight;
+        }
+        p {
+          margin-bottom: 0;
+          text-align: center;
+        }
+        //for submit in profile
+        button {
+          @include set-background-color($primaryColorLight);
+          position: relative;
+          width: 22rem;
+          svg {
+            position: absolute;
+            left: 1.3rem;
+          }
+        }
+        .profilePic {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 10rem;
+          height: 10rem;
+          object-fit: cover;
+          @include respond-to("medium") {
+            width: 16rem;
+            height: 16rem;
+          }
+          border-radius: 10rem;
+          border: none;
+        }
+        #profile-pic-btn {
+          width: 0;
+        }
+        [for="profile-pic-btn"] {
+          transition: 200ms ease;
+          cursor: pointer;
+          position: absolute;
+          top: 65%;
+          right: 0px;
+          width: 2.7rem;
+          height: 2.7rem;
+          @include respond-to("medium") {
+            width: 4.3rem;
+            height: 4.3rem;
+          }
+          &:focus,
+          &:hover {
+            filter: brightness(1.1);
+          }
+        }
+
+        .avatar {
+          position: relative;
+          align-self: center;
+          cursor: pointer;
+          width: 10rem;
+          height: 10rem;
+          @include respond-to("medium") {
+            width: 16rem;
+            height: 16rem;
+          }
+
+          .edit-pic-modal {
+            visibility: hidden;
+            opacity: 0;
+            transition: 200ms ease;
+            position: absolute;
+            top: 7.4rem;
+            right: 5rem;
+            @include set-background-color($surfaceColor);
+            box-shadow: $elevate4dp;
+            border-radius: 1rem;
+            padding: 1.6rem;
+            z-index: 4;
+            &.show {
+              visibility: visible;
+              opacity: 1;
+            }
+            & > * {
+              transition: 0ms ease;
+              position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              @include set-background-color($surfaceColor);
+              font-weight: 400;
+              text-transform: capitalize;
+              padding: 0;
+              min-height: initial;
+              width: 14.5rem;
+              &:focus,
+              &:hover {
+                box-shadow: none;
+                text-decoration: underline;
+              }
+              & > svg {
+                position: absolute;
+                left: 0;
+              }
+              & + * {
+                margin-top: 1.6rem;
+              }
+            }
+          }
+        }
+        .smallComponentsContainer {
+          display: grid;
+          /* flex-flow: column wrap; */
+          grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
+          gap: 1.6rem;
+          @include respond-to("medium2") {
+            /* flex-flow: row wrap; */
+            grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
+          }
+          & > div {
+            flex: 1;
+            @include respond-to("medium2") {
+              /* min-width: 32rem; */
+            }
+          }
+        }
+
+        .questionCon {
+          .textFieldContainer {
+            min-width: 0;
+          }
+          //contact information
+          &:nth-of-type(3) {
+            .smallComponentsContainer {
+              & > div {
+                //street address
+                &:nth-child(1) {
+                  min-width: 100%;
+                }
+                &:nth-child(2) {
+                  @include respond-to("medium2") {
+                    min-width: 46.4rem;
+                  }
+                }
+                &:nth-child(3),
+                &:nth-child(4) {
+                  min-width: 18.3rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    //utils---------------------------------------------
+    .imageInputContainer {
+      display: flex;
+      flex-flow: column;
+      gap: 0.8rem;
+      position: relative;
+      min-width: 26.4rem;
+      min-height: 15.2rem;
+      width: 100%;
+      gap: 0;
+      @include respond-to("large") {
+        min-height: 23.7rem;
+        flex: 1;
+      }
+      .image-con {
+        position: relative;
+        padding-top: 56.25%;
+        flex: 1;
+      }
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid $disabled;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        appearance: none;
+        flex: 1;
+        object-fit: cover;
+        background-image: url("../images/imgInputPlaceHolder.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .fileUploadBtn {
+        @include set-background-color($mediumEmphasis);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        padding: 0.4rem 0;
+        svg {
+          width: 1.8rem;
+          height: 1.8rem;
+        }
+      }
+    }
+    //inputs
+    input[type="text"],
+    input[type="password"],
+    input[type="date"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="number"],
+    select,
+    textarea {
+      border-radius: 0.5rem;
+      border-right: 1px solid $textfield-border !important;
+      min-width: 0rem;
+      padding-right: 1.6rem;
+      padding-left: 1.6rem;
+      &:focus {
+        border-right: 1px $mediumEmphasis solid !important;
+      }
+    }
+    /* input[type="number"]{
+            @extend %outline;
+            color: $mediumEmphasis;
+        } */
+    //radioButtons
+    fieldset {
+      border: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 2.4rem;
+      padding: 0;
+      display: flex;
+      flex-flow: wrap;
+    }
+    input[type="radio"] {
+      width: 15rem;
+      height: 4rem;
+      border: none;
+      &::before {
+        //1,2 reset
+        position: static; //1
+        transform: translate(0); //2
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        color: $primaryColorLight;
+        border-color: currentColor;
+        border: 1px solid;
+        border-radius: 0.5rem;
+        background-repeat: no-repeat;
+        background-position: left 1.2rem center;
+        transition: 200ms ease;
+        background-image: url("../images/radioDefaultIcon.svg");
+      }
+      &:checked::before {
+        @extend %filled;
+        @include set-background-color($primaryColorLight);
+        background-image: url("../images/workTypeActiveIcon.svg");
+      }
+
+      &#full-time::before {
+        content: "Full-Time";
+      }
+      &#part-time::before {
+        content: "Part-Time";
+      }
+      &#open-status::before {
+        content: "Active";
+      }
+      &#closed-status::before {
+        content: "Archived";
+      }
+      &#male-id::before {
+        content: "Male";
+      }
+      &#female-id::before {
+        content: "Female";
+      }
+      &#employed-id::before {
+        content: "Employed";
+      }
+      &#unemployed-id::before {
+        content: "Unemployed";
+      }
+      &#yes-id::before {
+        content: "Yes";
+      }
+      &#no-id::before {
+        content: "No";
+      }
+    }
+  }
+}

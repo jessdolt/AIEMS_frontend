@@ -1,0 +1,224 @@
+.admin.dataInput{
+    .reportView{
+        .answerCon{
+            padding-right: 0.8rem;
+            max-height: 34.4rem;
+            overflow: auto;
+            canvas{
+                align-self: center;
+                min-height: 34.4rem;
+                max-height: 100%;
+                max-width: 80%;
+            }
+        }
+    }
+}
+.mainContent{
+    &.questionnaire{
+        
+        .form{
+            &:first-child{
+                display: flex;
+                flex-flow: column;
+                /* gap: 3.2rem; */
+                &>*+*{
+                    margin-top: 3.2rem;
+                }
+                h2{
+                    & > button{
+                        @extend %filled;
+                        @include set-background-color($primaryColorLight);
+                        margin-left: auto;
+                    }
+                }
+                .questionCon{
+                    @include set-background-color($surfaceColor);
+                    display: flex;
+                    flex-flow: column;
+                    /* gap: 1.6rem; */
+                    &>*+*{
+                        margin-top: 1.6rem;
+                    }
+                    border-left: 4px solid $primaryColorLight;
+                    border-radius: 0.5rem;
+                    padding: 1.6rem 3.2rem;
+                    box-shadow: $elevate2dp;
+                }
+                .questionHeader{
+                    display: flex;
+                    align-items: center;
+                    padding-bottom: 0.8rem;
+                    border-bottom: 1px solid $textfield-border;
+                    &>svg{
+                        margin: 0.45rem;
+                    }
+                }
+                .questionType{
+                    margin-left: auto;
+                    margin-right: 0.8rem;
+                    padding: 0.45rem 1rem;
+                    border: 1px solid currentColor;
+                    border-radius: 0.5rem;
+                    background-color: $backgroundColor;
+                    color: $mediumEmphasis;
+                }
+
+                .answerCon{
+                    //forfirefox scrollbar
+                    scrollbar-width: thin;
+                    scrollbar-color: $disabled $surfaceColor;
+                    &::-webkit-scrollbar{
+                        width: 0.5rem;
+                    }
+                    &::-webkit-scrollbar-track{
+                        background-color: $surfaceColor;
+                    }
+                    &::-webkit-scrollbar-thumb{
+                        background-color: $disabled;
+                        border-radius: 5rem;
+                        
+                    }
+                    display: flex;
+                    flex-flow: column;
+                    /* gap: 0.8rem; */
+                    &>*+*{
+                        margin-top: 0.8rem;
+                    }
+                    
+                    div,ul{
+                        display: flex;
+                        /* gap: 0.8rem; */
+                        &>*+*{
+                            margin-left: 0.8rem;
+                        }
+                    }
+                    ul{
+                        list-style: disc;
+                        flex-flow: column;
+                    }
+                }
+
+                //singleComponent
+                h3{
+                    //reset
+                    margin: 0;
+                    color: $highEmphasis;
+                }
+                input[type="radio"]{
+                    margin: 0.175rem;
+                }
+                textarea{
+                    padding: .85rem 1.6rem .85rem 1.6rem;
+                    border: 1px $textfield-border solid;
+                    height: 8rem;
+                    min-height: 8rem;
+                    resize: none;
+                    //reset
+                    min-width: 0;
+                    &:focus{ 
+                        border: 1px $mediumEmphasis solid;
+                    }
+                }
+                .optionSpan{
+                    border-radius: 10rem;
+                }
+                
+            }
+        }
+        &.adminForm{
+            .form{
+                &:last-child{
+                    /* gap: 4rem; */
+                    &>*:nth-child(2){
+                        margin-top: 0 !important;
+                    }
+                    &>*+*{
+                        margin-top: 4rem !important;
+                    }
+                    padding-left: 4.8rem;
+                    padding-right: 4.8rem;
+                    .surveyInfoCon{
+                        display: flex;
+                        flex-flow: column;
+                        /* gap: 0.8rem; */
+                        &>*+*{
+                            margin-top: 0.8rem;
+                        }
+                        padding-bottom: 2.4rem;
+                        border-bottom: 1px solid $disabled;
+                    }
+                    .dateInfo{
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+    }
+    //reportview Overides questionnaire
+    &.reportView{
+        .btnGroupContainer{
+            margin-left: auto;
+            flex-flow: row;
+            a{
+                @extend %btn;
+            }
+            a,button{
+                @include set-background-color($backgroundColor);
+                @extend %filled;
+                position: relative;
+                svg{
+                    left: 1.3rem;
+                    top: 1.3rem;
+                    width: 1.8rem;
+                    height: 1.8rem;
+                }
+            }
+        }
+        textarea{
+            @include set-background-color($backgroundColor);
+        }
+        .answer-list{
+            &>*+*{
+                margin-top: 3rem;
+            }
+            
+            .answer{
+                margin-left: 2rem!important;
+            }
+            .flex-con{
+                display: flex;
+                align-items: center;
+                flex-flow: wrap;
+                /* gap: 1.6rem; */
+                &>*+*{
+                    margin-top: 1.6rem;
+                }
+            }
+            p{
+                min-width: 100%;
+            }
+            .answer-ratio{
+                min-width: 5.4rem;
+            }
+            .answer-progress-bar{
+                flex: 1;
+                background-color: $backgroundColor;
+                border-radius: 1rem;
+                height: 1.2rem;
+                max-width: 86%;
+                .answer-progress-bar-percent{
+                    background-color: $primaryColorLight;
+                    width: 50%;
+                    border-radius: inherit;
+                }
+            }
+            .answer-percentage{
+                @include set-background-color($primaryColorLight);
+                border-radius: 0.5rem;
+                min-width: 5.8rem;
+                padding: 0 0.4rem;
+                text-align: center;
+            }
+        }
+    }
+}

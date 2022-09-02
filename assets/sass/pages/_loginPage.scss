@@ -1,0 +1,349 @@
+.loginMain{
+    height: 100vh;
+    background-image: url("../images/loginBackground-1.png");
+    background-repeat: no-repeat;
+    background-size: 100vw 100vw;
+    display: flex;
+    flex-flow: column;
+    @include respond-to('medium2'){
+        flex-flow: row;
+        background-size: initial;
+    }
+    .pupPylon{
+        overflow: hidden;
+        background-color: transparent;
+        height: 18rem;
+        min-height: 18rem;
+        box-shadow: none;
+        @include respond-to('medium2'){
+            flex: 1;
+            height: 100%;
+        }
+        .img-con{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding-top: 56.25%;
+            @include respond-to('medium2'){
+                padding-top: 100%;
+            }
+        }
+        img{
+            position: absolute;
+            top: 0.8rem;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            @include respond-to('medium2'){
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                object-fit: cover;
+            }
+        }
+    }
+    
+    & > div{
+        position: relative;
+        background-color: $surfaceColor;
+        box-shadow: 0px 4px 4px rgba($color: #000000, $alpha: .25),
+                    0px 9px 46px 8px rgba($color: #000000, $alpha: .12),
+                    0px 24px 38px 3px rgba($color: #000000, $alpha: .14),
+                    0px 0px 200px 50px rgba($color: #000000, $alpha: .04);
+        flex: 1;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        /* gap: 1.6rem; */
+        &>*+*{
+            margin-top: 1.6rem;
+        }
+        
+        //pupLogo
+        &::before{
+            position: absolute;
+            top: -4rem;
+            min-width: 8rem;
+            min-height: 8rem;
+            content: "";
+            background-image: url("../images/PUPlogo.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 8rem 8rem;
+            border-radius: 5rem;
+            box-shadow: $elevate2dp;
+        }
+        @include respond-to('medium2'){
+            //forfirefox scrollbar
+            scrollbar-width: thin;
+            scrollbar-color: $disabled $surfaceColor;
+            &::-webkit-scrollbar{
+                width: 0.5rem;
+            }
+            &::-webkit-scrollbar-track{
+                background-color: $surfaceColor;
+            }
+            &::-webkit-scrollbar-thumb{
+                background-color: $disabled;
+                border-radius: 5rem;
+                
+            }
+            @include set-background-color($surfaceColor);
+            flex: 1;
+            //reset
+            margin-top: 0;
+            overflow: auto;
+            //just to center vertically the whole form ui including the visible logo
+            &::before{
+                min-width: 10rem;
+                min-height: 10rem;
+                content: "";
+                position: initial;
+                visibility: hidden;
+            }
+        }
+        @include respond-to('large'){
+            /* gap: 2.4rem; */
+            &>*+*{
+                margin-top: 2.4rem;
+            }
+        }
+    }
+
+    header{
+        text-align: center;
+        display: flex;
+        flex-flow: column;
+
+        div{
+            min-width: 27rem;
+            height: 0.1rem;
+            color: $disabled;
+            background-color: $disabled;
+        }
+
+        @include respond-to('medium2'){
+            position: relative;
+            /* gap: 0.8rem; */
+            &>*+*{
+                margin-top: 0.8rem;
+            }
+
+            //the actual visible logo for desktop view
+            &::before{
+                position: absolute;
+                top: -2.4rem;
+                left: 50%;
+                transform: translate(-50%,-100%);
+                min-width: 8rem;
+                min-height: 8rem;
+                background-size: 8rem 8rem;
+                content: "";
+                background-image: url("../images/PUPlogo.png");
+                background-repeat: no-repeat;
+                background-position: center;
+                border-radius: 5rem;
+                box-shadow: $elevate2dp;
+            }
+
+            div{
+                box-shadow: 0px 0px 1px rgba($color: #000000, $alpha: .25);
+            }
+        }
+        @include respond-to('large'){
+            &::before{
+            min-width: 10rem;
+            min-height: 10rem;
+            background-size: 10rem 10rem;
+            }
+        }
+    }
+    form{
+        width: 100%;
+    }
+    .textFieldContainer{
+        align-self: stretch;
+    }
+    .verification-code{
+        min-width: 30rem;
+    }
+
+    form,.verify-con{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        &>*+*{
+            margin-top: 1.6rem;
+        }
+        /* gap: 1.6rem; */
+        //just to limit the width in firefox
+        max-width: 27rem;
+
+        .textFieldContainer{
+            .icon{
+                path{
+                    fill: $mediumEmphasis;
+                }
+            }
+            //just to limit the width in firefox
+            #verification-code{
+                max-width: 100%
+            }
+        }
+        @include respond-to('medium2'){
+            &>*+*{
+                margin-top: 2.4rem;
+            }
+            /* gap: 2.4rem; */
+            min-width: 30rem;
+
+            .textFieldContainer{
+                align-self: stretch;
+            }
+        }
+
+        button{
+            @include set-background-color($primaryColorLight);
+            @extend %filled;
+            width: 16rem;
+        }
+        
+    }
+    p{
+        width: 25.2rem;
+    }
+    a{
+        span{
+            color: currentColor;
+        }
+    }
+    .resend{
+        background-color: transparent;
+        box-shadow: none;
+        color: $primaryColorLight;
+        border: none;
+        text-transform: capitalize;
+        min-height: 3rem;
+        &:focus,&:hover{
+            text-decoration: underline;
+            filter: brightness(0.9);
+        }
+    }
+
+    //registartion overide
+    .registration{
+        //forfirefox scrollbar
+        scrollbar-width: thin;
+        scrollbar-color: $disabled $surfaceColor;
+        &::-webkit-scrollbar{
+            width: 0.5rem;
+        }
+        &::-webkit-scrollbar-track{
+            background-color: $surfaceColor;
+        }
+        &::-webkit-scrollbar-thumb{
+            background-color: $disabled;
+            border-radius: 5rem;
+            
+        }
+        min-height: initial;
+        padding: 4.6rem 4.5rem;
+        @include respond-to('medium2'){
+            /* padding: 0; */
+            max-height: 100%;
+            height: 100%;
+            overflow: auto;
+            justify-content: initial;
+        }
+        form,.verify-con{
+            border: 1px solid $disabled;
+            border-radius: 1rem;
+            padding: 2.4rem 3.2rem 3.2rem;
+            align-items: stretch;
+            //reset
+            width: initial;
+            max-width: 62.4rem;
+            @include respond-to('medium2'){
+                padding: 2.4rem 4.8rem 3.2rem;
+            }
+    
+            .input-con-list{
+                display: flex;
+                flex-flow: wrap;
+                &>*+*{
+                    margin-top: 1.6rem;
+                    
+                }
+                &>*:nth-child(2){
+                    @include respond-to('large'){
+                        margin-top: 0;
+                    }
+                }
+                &>*{
+                    flex: 1;
+                    min-width: 24rem;
+                    @include respond-to('medium'){
+                        min-width: 28rem;
+                    }
+                    @include respond-to('large'){
+                        min-width: 24rem;
+                    }
+                    
+                    &:nth-child(even){
+                        @include respond-to('large'){
+                            margin-left: 4rem;
+                        }
+                    }
+                }
+            }
+        }
+        .verify-con{
+            min-width: 30.6rem;
+            p{
+                width: 100%;
+                
+                span{
+                    color: $primaryColorLight;
+                }
+            }
+        }
+        
+        .btn-con{
+            display: flex;
+            &>*+*{
+                margin-left: 2.4rem;
+            }
+            a{
+                @extend %btn;
+                @include set-background-color($backgroundColor);
+            }
+            button{
+                
+            }
+            a,button{
+                @extend %filled;
+                width: 12rem;
+                text-decoration: none;
+                @include respond-to('medium2'){
+                    width: 18rem;
+                }
+            }
+            .primary{
+                @include set-background-color($primaryColorLight);
+            }
+        }
+
+        //single components
+        input[type="text"],input[type="password"],input[type="date"],input[type="tel"],input[type="email"],select,textarea{
+            border-radius: 0.5rem;
+            border-right: 1px solid $textfield-border !important;
+            min-width: 24rem;
+            padding-right: 1.6rem;
+            &:focus{ 
+                border-right: 1px $mediumEmphasis solid!important;
+            }
+        }
+    }
+}

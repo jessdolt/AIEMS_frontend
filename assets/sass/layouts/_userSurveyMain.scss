@@ -1,0 +1,141 @@
+//remove accessibility to navigation bar
+.userSurvey{
+    //editprofile if first time
+    & ~ .mainNav{
+        & > *{
+            display: none;
+        }
+        //except the userButton
+        & > button{
+            display: flex;
+            margin-left: auto;
+            //hide other options except logout
+            & ~ .userContainer{
+                & > a{
+                    display: none;
+                }
+                & > a:last-of-type{
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .hamburgerIcon{
+        display: none;
+    }
+}
+//main starts here
+.userSurvey ~ .alumni{
+    .mainContent{
+        .container{
+            z-index: 2;
+            .form{
+                /* gap: 2.4rem; */
+                &>*+*{
+                    margin-top: 2.4rem!important;
+                }
+                h1,h2{
+                    padding: 2.4rem 0;
+                    border-bottom: 1px solid $disabled;
+                }
+                &>h2,h1{
+                    text-align: center;
+                }
+                p{
+                    text-align: center;
+                    color: $mediumEmphasis;
+                    margin-bottom: 1.2rem;
+                }
+                .surveyCard{
+                    max-width: 65.6rem;
+                    width: 100%;
+                    margin: 0 auto;
+                    padding: 1.6rem 2.4rem;
+                    @include respond-to('medium2'){
+                        padding: 2.4rem 4.8rem;
+                    }
+                    &.googleForm{
+                        border-left-color: $googleFormsColor;
+                        background-image: url('../images/google-forms-icon.svg');
+                        background-repeat: no-repeat;
+                        background-position: right 1.8rem top 2.4rem;
+                        background-size: 7.4rem 2.7rem;
+                        @include respond-to('medium2'){
+                            background-size: initial;
+                            background-position: right 4.8rem top 2.4rem;
+                        }
+
+                        &>button{
+                            display: none;
+                            align-self: center;
+                            width: 16rem;
+                        }
+                    }
+                    h3{
+                        max-width: 80%;
+                    }
+                    .check-con{
+                        display: flex;
+                        align-items: center;
+                        &>*+*{
+                            margin-left: 0.8rem;
+                        }
+                        [type="checkbox"]{
+                            &:checked::before{
+                                background-image: url('../images/check-success-icon.svg');
+                            
+                            }
+                        }
+                        
+                    }
+                    p{
+                        color: $mediumEmphasis;
+                        margin-top: 0.8rem;
+                        margin-bottom: 1.6rem;
+                        text-align: left;
+                    }
+                    
+                }
+                //for the link to the actual survey questions 
+                button,a{
+                    @extend %btn;
+                    @extend %filled;
+                    @include set-background-color($activeIndicator);
+                    align-self: center;
+                    width: 16rem;
+                }
+                //submit the survey
+                button{
+                    align-self: center;
+                    @include respond-to('medium2'){
+                        align-self: flex-end;
+                    }
+                    width: 18rem;
+                }
+            }
+        }
+        //reset
+        .textFieldContainer{
+            min-width: 26rem;
+            
+        }
+        //single components
+        label{
+            color: $mediumEmphasis;
+        }
+        input[type="text"],input[type="date"],input[type="tel"],input[type="email"],select,textarea{
+            border-radius: 0.5rem;
+            border-right: 1px solid $textfield-border !important;
+            min-width: 0rem;
+            padding-right: 1.6rem;
+            padding-left: 1.6rem;
+            &:focus{ 
+                border-right: 1px $mediumEmphasis solid!important;
+            }
+        }
+    }
+}
+
+
+

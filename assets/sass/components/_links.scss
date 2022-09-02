@@ -1,0 +1,23 @@
+a{
+    text-decoration: none;
+    color: $highEmphasis;
+    text-align: center;
+}
+
+a:link, a:visited{
+    color: $primaryColorLight;
+}
+
+a:focus{
+    filter: opacity(.88);
+}
+
+a:hover{
+    filter: opacity(.96);
+    text-decoration: underline;
+}
+
+a:active{
+    color: $primaryColor;
+    filter: opacity(1);
+}
